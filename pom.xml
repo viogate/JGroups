@@ -4,7 +4,7 @@
     <artifactId>jgroups</artifactId>
     <packaging>bundle</packaging>
     <name>JGroups</name>
-    <version>4.0.6-viogate-1</version>
+    <version>4.0.6-viogate-2-SNAPSHOT</version>
     <url>http://www.jgroups.org</url>
 
     <properties>
@@ -43,7 +43,7 @@
         <connection>scm:git:git://github.com/viogate/JGroups.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/viogate/JGroups.git</developerConnection>
         <url>https://github.com/viogate/JGroups</url>
-      <tag>jgroups-4.0.6-viogate-1</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <issueManagement>
