@@ -5,7 +5,7 @@
     <artifactId>jgroups</artifactId>
     <packaging>bundle</packaging>
     <name>JGroups</name>
-    <version>4.0.6.Final</version>
+    <version>4.0.6-viogate-1-SNAPSHOT</version>
     <url>http://www.jgroups.org</url>
 
     <properties>
@@ -41,9 +41,9 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:git://github.com/belaban/JGroups.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/belaban/JGroups.git</developerConnection>
-        <url>https://github.com/belaban/JGroups</url>
+        <connection>scm:git:git://github.com/viogate/JGroups.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/viogate/JGroups.git</developerConnection>
+        <url>https://github.com/viogate/JGroups</url>
     </scm>
 
     <issueManagement>
@@ -53,13 +53,12 @@
 
     <distributionManagement>
         <repository>
-            <id>${nexus.server.id}</id>
-            <name>JBoss Releases Repository</name>
-            <url>${nexus.server.url}</url>
+            <id>healthcare-releases</id>
+            <url>http://nexus.cegeka.be/nexus/content/repositories/healthcare-releases</url>
         </repository>
         <snapshotRepository>
-            <id>${nexus.snapshot.server.id}</id>
-            <url>${nexus.snapshot.server.url}</url>
+            <id>healthcare-snapshots</id>
+            <url>http://nexus.cegeka.be/nexus/content/repositories/healthcare-snapshots</url>
         </snapshotRepository>
     </distributionManagement>
 
@@ -125,7 +124,7 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>[6.9,)</version>
+            <version>6.9.10</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -170,14 +169,10 @@
         </resources>
         <plugins>
             <plugin>
-                <groupId>org.sonatype.plugins</groupId>
-                <artifactId>nexus-staging-maven-plugin</artifactId>
-                <extensions>true</extensions>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
                 <configuration>
-                    <!-- See configuration details at http://books.sonatype.com/nexus-book/reference/staging-deployment.html -->
-                    <nexusUrl>${nexus.server.url}</nexusUrl>
-                    <serverId>${nexus.server.id}</serverId>
-                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                    <additionalJOption>-Xdoclint:none</additionalJOption>
                 </configuration>
             </plugin>
             <plugin>
@@ -294,20 +289,6 @@
             </plugin>
             <!-- Make sure we generate src jars too -->
             <plugin>
-               <groupId>org.apache.maven.plugins</groupId>
-               <artifactId>maven-source-plugin</artifactId>
-               <inherited>true</inherited>
-               <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>jar-no-fork</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <configuration>
@@ -354,11 +335,6 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-release-plugin</artifactId>
                     <version>2.5.2</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.sonatype.plugins</groupId>
-                    <artifactId>nexus-staging-maven-plugin</artifactId>
-                    <version>1.6.5</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.felix</groupId>
